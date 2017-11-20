@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RPN FTW!</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+	<h1>
+		The best calculator, the RPN calculator
+	</h1>
+	
+	<div class="form-holder">
+		<form method="post" action="/enter">
+			<div class="form-input">
+				<input type="number"
+					   autofocus
+					   step="any"
+					   required
+					   name="value">
+			</div>
+			<div class="form-actions">
+				<button>Enter</button>
+			</div>
+		</form>
+
+		<div>
+			<form method="post" action="/abs">
+				<button>abs</button>
+			</form>
+		</div>
+		
+		{{#hasTwoOrMoreNumbers}}
+		<div>
+			<form method="post" action="/add">
+				<button>+</button>
+			</form>
+		</div>
+		<div>
+			<form method="post" action="minus">
+				<button>-</button>
+			</form>
+		</div>
+		{{/hasTwoOrMoreNumbers}}
+		{{#hasUndoer}}
+		<div>
+			<form method="post" action="/undo">
+				<button>Undo</button>
+			</form>
+		</div>
+		{{/hasUndoer}}
+	</div>
+	
+	<div class="stack-holder">
+		<h1 class="stack-title">Stack</h1>
+		<ol class="stack">
+			{{#stack}}
+				<li>{{ . }}</li>
+			{{/stack}}
+		</ol>
+	</div>
+</body>
+</html>
+
+</body>
+</html>
